@@ -9,7 +9,7 @@
 App web para comparar dados de telemetria de pilotos da F1 com dados reais da OpenF1 API.
 
 ### Demo
-[Acesse o app aqui]([SEU_LINK_AQUI](https://telemetria-f1-jdrqpuxopmcuetrdgnf6jh.streamlit.app/))
+[Acesse o app aqui](https://telemetria-f1-jdrqpuxopmcuetrdgnf6jh.streamlit.app/)
 
 ### Funcionalidades
 - Selecione qualquer ano, sessão e circuito disponível na OpenF1 API
@@ -41,7 +41,7 @@ Projeto desenvolvido para aprender Python aplicado à análise de dados de motor
 Web app for comparing F1 drivers' telemetry data using real race data from the OpenF1 API.
 
 ### Demo
-[Click here to access the app]([SEU_LINK_AQUI](https://telemetria-f1-jdrqpuxopmcuetrdgnf6jh.streamlit.app/))
+[Click here to access the app](https://telemetria-f1-jdrqpuxopmcuetrdgnf6jh.streamlit.app/)
 
 ### Features
 - Select any year, session and circuit available in the OpenF1 API
