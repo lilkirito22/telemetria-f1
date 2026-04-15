@@ -15,15 +15,15 @@ from telemetria import (
     buscar_anos,
 )
 
-st.title("Telemetria F1")
-st.caption("Comparação de pilotos por distância — dados reais via OpenF1")
+st.title("F1 Telemetry Dashboard")
+st.caption("Driver comparison by distance — real data via OpenF1")
 
 anos = buscar_anos()
-ano = st.selectbox("Ano", anos)
+ano = st.selectbox("Years", anos)
 
 sessoes = buscar_sessoes(ano)
 sessoes["label"] = sessoes["circuit_short_name"] + " — " + sessoes["session_name"]
-sessao_selecionada = st.selectbox("Sessão", sessoes["label"].tolist())
+sessao_selecionada = st.selectbox("Session", sessoes["label"].tolist())
 
 session_key = int(
     sessoes.loc[sessoes["label"] == sessao_selecionada, "session_key"].values[0]
@@ -35,15 +35,15 @@ lista_pilotos = pilotos["label"].tolist()
 
 col1, col2 = st.columns(2)
 with col1:
-    piloto1_label = st.selectbox("Piloto 1", lista_pilotos, index=0)
+    piloto1_label = st.selectbox("Driver 1", lista_pilotos, index=0)
 with col2:
-    piloto2_label = st.selectbox("Piloto 2", lista_pilotos, index=1)
+    piloto2_label = st.selectbox("Driver 2", lista_pilotos, index=1)
 
 piloto1 = int(pilotos.loc[pilotos["label"] == piloto1_label, "driver_number"].values[0])
 piloto2 = int(pilotos.loc[pilotos["label"] == piloto2_label, "driver_number"].values[0])
 
-if st.button("Comparar"):
-    with st.spinner("Buscando dados... pode demorar alguns segundos"):
+if st.button("Compare"):
+    with st.spinner("Fetching data... this may take a few seconds"):
         df1 = buscar_dados_volta(piloto1, session_key)
         df2 = buscar_dados_volta(piloto2, session_key)
         df1["date"] = pd.to_datetime(df1["date"], format="mixed")
@@ -73,7 +73,7 @@ if st.button("Comparar"):
             color="red",
             label=piloto2_label.split(" (")[0],
         )
-        ax1.set_ylabel("Velocidade (km/h)")
+        ax1.set_ylabel("Speed (km/h)")
         ax1.legend()
 
         ax2.plot(dist_comum, interpolar(df1, dist_comum, "throttle"), color="blue")
@@ -89,7 +89,7 @@ if st.button("Comparar"):
         ax4.axhline(y=0, color="gray", linestyle="--", linewidth=0.8)
         ax4.set_ylabel("Delta (s)")
         ax4.set_title(
-            "positivo = piloto 2 à frente | negativo = piloto 1 à frente",
+            "positive = driver 2 ahead | negative = driver 1 ahead",
             fontsize=9,
             color="gray",
         )
