@@ -82,7 +82,7 @@ if st.button("Compare"):
 
         ax3.plot(dist_comum, interpolar(df1, dist_comum, "brake"), color="blue")
         ax3.plot(dist_comum, interpolar(df2, dist_comum, "brake"), color="red")
-        ax3.set_ylabel("Freio (%)")
+        ax3.set_ylabel("Brake (%)")
 
         delta = calcular_delta(df1, df2, dist_comum)
         ax4.plot(dist_comum, delta, color="purple")
