@@ -94,7 +94,7 @@ if st.button("Compare"):
             color="gray",
         )
 
-        plt.xlabel("Distância (m)")
+        plt.xlabel("Distance (m)")
         plt.suptitle(f"{sessao_selecionada}", fontsize=13)
         plt.tight_layout()
 
